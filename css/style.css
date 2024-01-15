@@ -1,0 +1,106 @@
+:root {
+ 
+  --color-main-background: rgb(239, 216, 216);
+  
+}
+
+/** Reset **/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, sans-serif;
+}
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+li {
+  display: inline-block;
+}
+
+
+
+/** Utils **/
+.brd{
+  border: 2px dashed red;
+}
+
+
+
+/** Debug **/
+
+
+
+
+
+
+
+
+/** MAIN **/
+.wrapper{
+  min-height: 100vh;
+  background-color: var(--color-main-background);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/** container **/
+.container {
+  width: 1080px;
+  height: 700px;
+
+  position: relative;
+  display: flex;
+  justify-content: end;
+}
+
+/** Slide Container **/
+.slideContainer{
+  height: 100%;
+  width: 100%;
+  background-color: aqua; 
+  
+}
+
+/** box preview**/
+.container-preview{
+  width: 15%;
+
+  position: absolute;
+  top: 25px;
+  bottom: 25px;
+  right: 25px;
+}
+.box{
+  height: calc(100% / 5);
+
+}
+
+
+/** box-freccie**/
+.freccia{
+  height: 50px;
+  aspect-ratio: 1;
+  
+  position: absolute; 
+  left: 50%;
+  transform: translate(-50%); 
+}
+.next{
+  top: 15px; 
+}
+.back{
+  bottom: 15px;
+}
