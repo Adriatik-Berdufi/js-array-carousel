@@ -6,12 +6,11 @@ const allPhotos = document.getElementsByClassName("slide");
 
 //* On Load 
 let fotoLibrary = ["01.webp","02.webp","03.webp","04.webp","05.webp"];
-let activeImage = 1;
+let activeImage = 0;
 
 //* genero photo
 
 const activeImageUrl = fotoLibrary[activeImage];
-console.log(activeImageUrl);
 const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
 photoContainer.innerHTML = photoHtml;
 
@@ -26,3 +25,15 @@ for(i = 0; i < fotoLibrary.length; i++ ){
     }
 };
 thumbnailsContainer.innerHTML = thumbHtml;
+
+
+//** sul click del next
+next.addEventListener("click", function(){
+    activeImage ++;
+    const activeImageUrl = fotoLibrary[activeImage];
+    const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
+    photoContainer.innerHTML = photoHtml;
+    if(activeImage == fotoLibrary.length - 1){
+        activeImage = -1;
+    }
+});
