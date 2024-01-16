@@ -40,13 +40,11 @@ next.addEventListener("click", function(){
 
 //** sul click del back
 back.addEventListener("click", function(){
-    console.log(activeImage);
+    if(activeImage == 0){
+        activeImage = fotoLibrary.length   ;
+    }
     activeImage --;
     const activeImageUrl = fotoLibrary[activeImage];
     const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
     photoContainer.innerHTML = photoHtml;
-    console.log(activeImage);
-    if(activeImage == 0){
-        activeImage = fotoLibrary.length -1  ;
-    }
 });
