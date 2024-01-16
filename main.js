@@ -2,7 +2,7 @@ const photoContainer = document.getElementById("slideContainer")
 const thumbnailsContainer = document.getElementById("thumbnailsContainer")
 const next = document.getElementById("next");
 const back = document.getElementById("back");
-const allPhotos = document.getElementsByClassName("slide");
+const allPhotos = document.getElementsByClassName("box");
 
 //* On Load 
 let fotoLibrary = ["01.webp","02.webp","03.webp","04.webp","05.webp"];
@@ -18,10 +18,13 @@ photoContainer.innerHTML = photoHtml;
 let thumbHtml = "";
 for(i = 0; i < fotoLibrary.length; i++ ){
     const image = fotoLibrary[i];
-    if(i != 2 && i != 3){
-        thumbHtml += `<div class="brd box "><img src="./img/${image}" alt=""></div>`;
+    if(i == 0){
+        thumbHtml += `<div class=" box "><img src="./img/${image}" alt=""></div>`;
+    }
+    else if(i != 2 && i != 3){
+        thumbHtml += `<div class=" box in-active-box"><img src="./img/${image}" alt=""></div>`;
     }else{
-        thumbHtml += `<div class="brd box special"><img src="./img/${image}" alt=""></div>`;
+        thumbHtml += `<div class=" box special in-active-box"><img src="./img/${image}" alt=""></div>`;
     }
 };
 thumbnailsContainer.innerHTML = thumbHtml;
@@ -29,13 +32,28 @@ thumbnailsContainer.innerHTML = thumbHtml;
 
 //** sul click del next
 next.addEventListener("click", function(){
+    console.log("---- 1 ----");
+    console.log(activeImage);
     activeImage ++;
+    //*img
     const activeImageUrl = fotoLibrary[activeImage];
+    //* slide img
     const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
     photoContainer.innerHTML = photoHtml;
+    //*thumbImg
+    allPhotos[activeImage].classList.remove("in-active-box");
+    if(activeImage == 0){
+        allPhotos[fotoLibrary.length - 1].classList.add("in-active-box");  
+    }
+    allPhotos[activeImage -1 ].classList.add("in-active-box");
+
+
     if(activeImage == fotoLibrary.length - 1){
         activeImage = -1;
     }
+    
+
+
 });
 
 //** sul click del back
@@ -47,4 +65,12 @@ back.addEventListener("click", function(){
     const activeImageUrl = fotoLibrary[activeImage];
     const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
     photoContainer.innerHTML = photoHtml;
+    //*thumbImg
+    if(activeImage == fotoLibrary.length  - 1){
+        allPhotos[0].classList.add("in-active-box");
+    }
+    allPhotos[activeImage].classList.remove("in-active-box");
+    allPhotos[activeImage + 1 ].classList.add("in-active-box");
+    
 });
+
