@@ -16,7 +16,11 @@ body {
 }
 img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 12%;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -71,8 +75,15 @@ li {
   height: 100%;
   width: 100%;
   background-color: aqua; 
-  
+  position: relative;
 }
+.slide{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+
 
 /** box preview**/
 .container-preview{
@@ -85,18 +96,28 @@ li {
 }
 .box{
   height: calc(100% / 5);
-
 }
-
+.special > img{
+  object-position: 90% 0;
+}
 
 /** box-freccie**/
 .freccia{
   height: 50px;
   aspect-ratio: 1;
+  background-color: rgba(222, 220, 217,0.7);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
   position: absolute; 
   left: 50%;
   transform: translate(-50%); 
+}
+.freccia > i{
+  font-size: 2.5rem;
 }
 .next{
   top: 15px; 
