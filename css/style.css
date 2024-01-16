@@ -1,6 +1,6 @@
 :root {
  
-  --color-main-background: rgb(239, 216, 216);
+  --color-main-background: rgb(210, 199, 199);
   
 }
 
@@ -81,6 +81,10 @@ li {
   height: 100%;
   width: 100%;
   position: absolute;
+  opacity: 0;
+}
+.active{
+  opacity: 1;
 }
 
 
