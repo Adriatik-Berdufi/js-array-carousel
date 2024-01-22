@@ -1,5 +1,6 @@
-const photoContainer = document.getElementById("slideContainer")
-const thumbnailsContainer = document.getElementById("thumbnailsContainer")
+const photoContainer = document.getElementById("slideContainer");
+const container = document.getElementById("container");
+const thumbnailsContainer = document.getElementById("thumbnailsContainer");
 const next = document.getElementById("next");
 const back = document.getElementById("back");
 const allPhotos = document.getElementsByClassName("box");
@@ -7,7 +8,10 @@ const allPhotos = document.getElementsByClassName("box");
 //* On Load 
 let fotoLibrary = ["01.webp","02.webp","03.webp","04.webp","05.webp"];
 let activeImage = 0;
-
+container.addEventListener("mouseout", function(){
+    console.log("mouse over");
+    clearInterval(loop);
+});
 //* genero photo
 
 const activeImageUrl = fotoLibrary[activeImage];
@@ -30,16 +34,17 @@ for(i = 0; i < fotoLibrary.length; i++ ){
 thumbnailsContainer.innerHTML = thumbHtml;
 
 
+
 //** sul click del next
-next.addEventListener("click", function(){
+const loop = next.addEventListener("click", function(){
 
     setInterval(function(){
         goToSlide(); 
-    }, 3000);
-    
-    
-
+    }, 1000);
+   
 });
+
+
 
 //** sul click del back
 back.addEventListener("click", function(){
@@ -49,7 +54,7 @@ back.addEventListener("click", function(){
     activeImage --;
     const activeImageUrl = fotoLibrary[activeImage];
     const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
-    photoContainer.innerHTML = photoHtml;
+    photoContainer.innerHTML += photoHtml;
     //*thumbImg
     if(activeImage == fotoLibrary.length  - 1){
         allPhotos[0].classList.add("in-active-box");
@@ -67,7 +72,7 @@ function goToSlide(){
     const activeImageUrl = fotoLibrary[activeImage];
     //* slide img
     const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
-    photoContainer.innerHTML = photoHtml;
+    photoContainer.innerHTML += photoHtml;
     //*thumbImg
     allPhotos[activeImage].classList.remove("in-active-box");
     if(activeImage == 0){
@@ -80,3 +85,5 @@ function goToSlide(){
     }
 
 }
+// Todo: riscrivere la funzione per generare le img
+    
