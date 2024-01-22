@@ -32,27 +32,12 @@ thumbnailsContainer.innerHTML = thumbHtml;
 
 //** sul click del next
 next.addEventListener("click", function(){
-    console.log("---- 1 ----");
-    console.log(activeImage);
-    activeImage ++;
-    //*img
-    const activeImageUrl = fotoLibrary[activeImage];
-    //* slide img
-    const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
-    photoContainer.innerHTML = photoHtml;
-    //*thumbImg
-    allPhotos[activeImage].classList.remove("in-active-box");
-    if(activeImage == 0){
-        allPhotos[fotoLibrary.length - 1].classList.add("in-active-box");  
-    }
-    allPhotos[activeImage -1 ].classList.add("in-active-box");
 
-
-    if(activeImage == fotoLibrary.length - 1){
-        activeImage = -1;
-    }
+    setInterval(function(){
+        goToSlide(); 
+    }, 3000);
     
-
+    
 
 });
 
@@ -74,3 +59,24 @@ back.addEventListener("click", function(){
     
 });
 
+//*** Funzioni */
+
+function goToSlide(){
+    activeImage ++;
+    //*img
+    const activeImageUrl = fotoLibrary[activeImage];
+    //* slide img
+    const photoHtml =`<img src="./img/${activeImageUrl}" alt="">`;
+    photoContainer.innerHTML = photoHtml;
+    //*thumbImg
+    allPhotos[activeImage].classList.remove("in-active-box");
+    if(activeImage == 0){
+        allPhotos[fotoLibrary.length - 1].classList.add("in-active-box");  
+    }
+    allPhotos[activeImage -1 ].classList.add("in-active-box");
+
+    if(activeImage == fotoLibrary.length - 1){
+        activeImage = -1;
+    }
+
+}

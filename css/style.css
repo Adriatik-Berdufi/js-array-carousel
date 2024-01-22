@@ -101,7 +101,7 @@ li {
 .box{
   height: calc(100% / 5);
   box-shadow: 0px 0px 28px 10px #FFFFFF;
-  border: 2px solid black;
+  border: 2px solid RED;
 }
 .special > img{
   object-position: 90% 0;
