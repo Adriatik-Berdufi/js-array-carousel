@@ -7,16 +7,33 @@ const allPhotosthums = document.getElementsByClassName("box");
 const allPhotosSlides = document.getElementsByClassName("slide");
 
 
-
 //* On Load 
 let fotoLibrary = ["01.webp","02.webp","03.webp","04.webp","05.webp"];
 let ultimaFoto = fotoLibrary.length;
 let activeImage = 0;
 let velocitaScroll;
+
+
 generoPhoto();
 
+//** sul click del next
+next.addEventListener("click", function(){
+     //goToSlide("next");
+     autoScroll();
+    
+});
+// Todo: adattare la funzione goToSlide anche per il pulsante back
+//** sul click del back
+back.addEventListener("click", function(){
+    goToSlide("back"); 
+})
 
+//** Stop autoscroll quando il mouse entra nel container
+photoContainer.addEventListener("mouseenter", function() {
+    stopAutoScroll();
+});
 
+//*** Funzioni */
 
 //* genero photo
 function generoPhoto(){
@@ -40,28 +57,7 @@ function generoPhoto(){
     thumbnailsContainer.innerHTML = thumbHtml;
 };
 
-
-
-//** sul click del next
-next.addEventListener("click", function(){
-     //goToSlide("next");
-     autoScroll();
-    
-});
-photoContainer.addEventListener("mouseenter", function() {
-    stopAutoScroll();
-});
-
-
-
-//** sul click del back
-back.addEventListener("click", function(){
-    goToSlide("back");
-    
-})
-
-//*** Funzioni */
-
+//* go to slide succesiva
 function goToSlide(direction){
     console.log(direction);
     if(direction === "next"){
@@ -96,14 +92,15 @@ function goToSlide(direction){
     };
     
 };
+//* outoscroll 
 function autoScroll(){
     velocitaScroll = setInterval(function (){
         goToSlide("next");
      } , 3000);
 }
-
+//* stop outoscroll 
 function stopAutoScroll() {
     clearInterval(velocitaScroll);
 }
-// Todo: riscrivere la funzione per generare le img
+
     
