@@ -12,6 +12,7 @@ const allPhotosSlides = document.getElementsByClassName("slide");
 let fotoLibrary = ["01.webp","02.webp","03.webp","04.webp","05.webp"];
 let ultimaFoto = fotoLibrary.length;
 let activeImage = 0;
+let velocitaScroll;
 generoPhoto();
 
 
@@ -44,9 +45,11 @@ function generoPhoto(){
 //** sul click del next
 next.addEventListener("click", function(){
      //goToSlide("next");
-     setInterval(function (){
-        goToSlide("next");
-     } , 3000);
+     autoScroll();
+    
+});
+photoContainer.addEventListener("mouseenter", function() {
+    stopAutoScroll();
 });
 
 
@@ -93,5 +96,14 @@ function goToSlide(direction){
     };
     
 };
+function autoScroll(){
+    velocitaScroll = setInterval(function (){
+        goToSlide("next");
+     } , 3000);
+}
+
+function stopAutoScroll() {
+    clearInterval(velocitaScroll);
+}
 // Todo: riscrivere la funzione per generare le img
     
