@@ -27,12 +27,12 @@ function generoPhoto(){
         if(i == 0){
             photoHtml += `<div class="slide active-slide"><img src="./img/${image}" alt=""></div>`;
             thumbHtml += `<div class="box active-box"><img src="./img/${image}" alt=""></div>`;
-        /*}
-        else if(i != 3 && i != 4){
+        
+        }else if(i != 2 && i != 3){
             photoHtml += `<div class="slide"><img src="./img/${image}" alt=""></div>`;
-            thumbHtml += `<div class=" box"><img src="./img/${image}" alt=""></div>`;*/
+            thumbHtml += `<div class=" box"><img src="./img/${image}" alt=""></div>`;
         }else{
-            photoHtml += `<div class="slide"><img src="./img/${image}" alt=""></div>`;
+            photoHtml += `<div class="slide special"><img src="./img/${image}" alt=""></div>`;
             thumbHtml += `<div class=" box special"><img src="./img/${image}" alt=""></div>`;
         };
     };
