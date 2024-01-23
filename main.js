@@ -43,55 +43,37 @@ function generoPhoto(){
 
 //** sul click del next
 next.addEventListener("click", function(){
-    
-     goToSlide(next);
-
-    
-    /*
-    if(activeImage == fotoLibrary.length){
-        //* elemento presente
-        allPhotosSlides[fotoLibrary.length -1].classList.remove("active-slide");
-        allPhotosthums[fotoLibrary.length -1].classList.remove("active-box");
-        //* elemento seguente
-        allPhotosSlides[0].classList.add("active-slide");
-        allPhotosthums[0].classList.add("active-box");
-        activeImage = 0;
-        
-    }else{
-        //* elemento presente
-        allPhotosSlides[activeImage - 1].classList.remove("active-slide");
-        allPhotosthums[activeImage -1].classList.remove("active-box");
-
-        //* elemento seguente
-        allPhotosSlides[activeImage].classList.add("active-slide");
-        allPhotosthums[activeImage].classList.add("active-box");
-    };
-
-   
-
-    activeImage ++;
-    console.log(activeImage);*/
-   
+     //goToSlide("next");
+     setInterval(function (){
+        goToSlide("next");
+     } , 3000);
 });
 
 
 
 //** sul click del back
 back.addEventListener("click", function(){
-   // goToSlide();
+    goToSlide("back");
     
 })
 
 //*** Funzioni */
 
 function goToSlide(direction){
+    console.log(direction);
+    if(direction === "next"){
+        direction = 1;
+        console.log(direction);
+
+    };
+    
     let oldActiveImage;
     let newActiveImage;
     
     oldActiveImage = activeImage;
-    newActiveImage = activeImage + 1 ;
+    newActiveImage = activeImage + direction ;
     
-    console.log(activeImage);
+    console.log(newActiveImage);
 
     //* elemento presente
     allPhotosSlides[oldActiveImage ].classList.remove("active-slide");
@@ -105,7 +87,7 @@ function goToSlide(direction){
     allPhotosSlides[newActiveImage].classList.add("active-slide");
     allPhotosthums[newActiveImage].classList.add("active-box");
     console.log(allPhotosSlides[newActiveImage]);
-    activeImage ++;
+    activeImage = activeImage + direction;
     if(activeImage === ultimaFoto){
         activeImage = 0;
     };
